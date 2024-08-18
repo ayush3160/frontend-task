@@ -5,8 +5,6 @@ import { Provider } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 
 import '@/styles/globals.css';
-// !STARTERCONF This is for demo purposes, remove @/styles/colors.css import immediately
-import '@/styles/colors.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 import Navbar from '@/components/navbar';
