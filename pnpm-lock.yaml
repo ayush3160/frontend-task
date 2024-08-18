@@ -29,6 +29,9 @@ importers:
       react-icons:
         specifier: ^4.12.0
         version: 4.12.0(react@18.3.1)
+      swiper:
+        specifier: ^11.1.9
+        version: 11.1.9
       tailwind-merge:
         specifier: ^2.1.0
         version: 2.3.0
@@ -57,6 +60,9 @@ importers:
       '@types/react':
         specifier: ^18.2.45
         version: 18.3.3
+      '@types/swiper':
+        specifier: ^6.0.0
+        version: 6.0.0
       '@types/testing-library__jest-dom':
         specifier: ^5.14.9
         version: 5.14.9
@@ -1292,6 +1298,10 @@ packages:
 
   '@types/stack-utils@2.0.1':
     resolution: {integrity: sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==}
+
+  '@types/swiper@6.0.0':
+    resolution: {integrity: sha512-QPZRgxZ+ivXXtzV43B3LxpXUIC7FE/EoKM+rtxngmgt2M7eeUYypZhyqZD8UxJtlBcUDw/ATGoVeSNpvBBrz2w==}
+    deprecated: This is a stub types definition. swiper provides its own type definitions, so you do not need this installed.
 
   '@types/testing-library__jest-dom@5.14.9':
     resolution: {integrity: sha512-FSYhIjFlfOpGSRyVoMBMuS3ws5ehFQODymf3vlI7U1K8c7PHwWwFY7VREfmsuzHSOnoKs/9/Y983ayOs7eRzqw==}
@@ -3811,6 +3821,10 @@ packages:
     engines: {node: '>=14.0.0'}
     hasBin: true
 
+  swiper@11.1.9:
+    resolution: {integrity: sha512-rflu8zvfGa3x1v/aeSufk4zRJffhOQowyvtJlp46sUBnOqAuk1Rdv5Ldj0AWWBV595iZ+ZMk7VB35ZRtRUomtA==}
+    engines: {node: '>= 4.7.0'}
+
   symbol-tree@3.2.4:
     resolution: {integrity: sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==}
 
@@ -5603,6 +5617,10 @@ snapshots:
   '@types/semver@7.5.0': {}
 
   '@types/stack-utils@2.0.1': {}
+
+  '@types/swiper@6.0.0':
+    dependencies:
+      swiper: 11.1.9
 
   '@types/testing-library__jest-dom@5.14.9':
     dependencies:
@@ -8601,6 +8619,8 @@ snapshots:
       css-tree: 2.3.1
       csso: 5.0.5
       picocolors: 1.0.0
+
+  swiper@11.1.9: {}
 
   symbol-tree@3.2.4: {}
 
