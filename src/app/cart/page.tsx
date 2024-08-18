@@ -1,40 +1,27 @@
 'use client';
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 
 import NextImage from '@/components/NextImage';
 
+import { removeProductFromCart } from '@/store/slices/cartSlice';
+import { RootState, useAppSelector } from '@/store/store';
+
 import { Product } from '@/types/types';
 
-const initialCartItems: Product[] = [
-  {
-    id: 1,
-    title: "Men's Casual T-Shirt",
-    description: 'A comfortable cotton t-shirt.',
-    price: 29.99,
-    category: "men's clothing",
-    image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
-    rating: {
-      rate: 5,
-      count: 1,
-    },
-  },
-  {
-    id: 2,
-    title: 'Gold & Silver Dragon Bracelet',
-    description: 'Handcrafted dragon bracelet in gold and silver.',
-    price: 199.99,
-    category: 'jewelery',
-    image: 'https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg',
-    rating: {
-      rate: 5,
-      count: 1,
-    },
-  },
-];
+interface CartState extends Product {
+  quantity: number;
+}
 
 export default function Cart() {
-  const [cartItems, setCartItems] = React.useState(
-    initialCartItems.map((item) => ({ ...item, quantity: 1 }))
+  const cartProducts = useAppSelector(
+    (state: RootState) => state.cart.products
+  );
+
+  const dispatch = useDispatch();
+
+  const [cartItems, setCartItems] = React.useState<CartState[]>(
+    cartProducts.map((item: Product) => ({ ...item, quantity: 1 }))
   );
 
   const increaseQuantity = (id: number) => {
@@ -56,14 +43,20 @@ export default function Cart() {
   };
 
   const removeItem = (id: number) => {
-    setCartItems((items) => items.filter((item) => item.id !== id));
+    dispatch(removeProductFromCart(id));
+
+    setCartItems(
+      cartItems.filter((value: CartState) => {
+        return value.id !== id;
+      })
+    );
   };
 
-  const calculateTotal = () => {
+  const calculateTotal = useCallback(() => {
     return cartItems
       .reduce((total, item) => total + item.price * item.quantity, 0)
       .toFixed(2);
-  };
+  }, [cartItems]);
 
   return (
     <div className='flex flex-col lg:flex-row gap-8 p-6'>
@@ -79,7 +72,7 @@ export default function Cart() {
               <NextImage
                 src={item.image}
                 alt={item.title}
-                className='w-20 h-20 object-cover rounded-md'
+                className='relative w-20 h-20 object-cover rounded-md'
                 layout='fill'
               />
               <div className='ml-4'>

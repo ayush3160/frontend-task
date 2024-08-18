@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 
 import NextImage from '@/components/NextImage';
+
+import { addProductToCart } from '@/store/slices/cartSlice';
 
 import { Product } from '@/types/types';
 
 export default function ProductCard({ product }: { product: Product }) {
+  const dispatch = useDispatch();
+
+  const handleAddToCart = useCallback(() => {
+    dispatch(addProductToCart(product));
+  }, [product, dispatch]);
+
   return (
     <main>
       <div className='relative bg-white rounded-lg shadow-md overflow-hidden h-full w-[275px] group cursor-pointer'>
@@ -32,7 +41,10 @@ export default function ProductCard({ product }: { product: Product }) {
 
         {/* Overlay with button */}
         <div className='absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
-          <button className='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600'>
+          <button
+            className='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600'
+            onClick={handleAddToCart}
+          >
             Add to Cart
           </button>
         </div>
