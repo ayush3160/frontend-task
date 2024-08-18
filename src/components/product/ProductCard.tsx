@@ -1,6 +1,8 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 
+import { toastMessage } from '@/lib/helper';
+
 import NextImage from '@/components/NextImage';
 
 import { addProductToCart } from '@/store/slices/cartSlice';
@@ -12,6 +14,7 @@ export default function ProductCard({ product }: { product: Product }) {
 
   const handleAddToCart = useCallback(() => {
     dispatch(addProductToCart(product));
+    toastMessage('Product Added To Cart');
   }, [product, dispatch]);
 
   return (
