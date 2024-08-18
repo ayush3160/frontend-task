@@ -9,9 +9,7 @@ const nextConfig = {
 
   // Uncoment to add domain whitelist
   images: {
-    domains: [
-      'fakestoreapi.com',
-    ],
+    domains: ['fakestoreapi.com'],
   },
 
   webpack(config) {

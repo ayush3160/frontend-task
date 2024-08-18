@@ -1,4 +1,5 @@
 import logger from '@/lib/logger';
+
 import { Product } from '@/types/types';
 
 export async function getProducts(): Promise<Product[]> {

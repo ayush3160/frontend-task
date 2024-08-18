@@ -5,9 +5,10 @@ import '@/styles/globals.css';
 // !STARTERCONF This is for demo purposes, remove @/styles/colors.css import immediately
 import '@/styles/colors.css';
 
-import { siteConfig } from '@/constant/config';
 import Navbar from '@/components/navbar';
+
 import ReactQueryProvider from '@/app/providers/ReactQueryProvider';
+import { siteConfig } from '@/constant/config';
 
 // !STARTERCONF Change these default meta
 // !STARTERCONF Look at @/constant/config to change them
